@@ -1,0 +1,18 @@
+<% posts.each do |post| %>
+  <p>Author: <%= post.user.name.titleize %></p>
+  <p>Post: <%= post.body %></p>
+  <p>Likes: <%= post.likes.count %></p>
+
+  <% unless post.comments.empty? %>
+    <h3>Comments:</h3>
+    <ul>
+      <% post.comments.each do |comment| %>
+        <li>
+          <p><%= comment.user.name.titleize %></p>
+          <p><%= comment.body %></p>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <br />
+<% end %>
