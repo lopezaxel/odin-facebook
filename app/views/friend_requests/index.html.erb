@@ -1,0 +1,7 @@
+<h1>Friend requests:</h1>
+<% @requests.each do |request| %>
+  <% user = User.find(request.requester_id) %>
+  <p><%= user.name.titleize %> sent you a friend request</p>
+  <p><%= link_to 'Accept request', friend_request_path(request.id, response: true, user_id: user.id), method: :delete %>, <%= link_to 'Delete request', friend_request_path(request.id, user_id: user.id), method: :delete %></p>
+  <br />
+<% end %>

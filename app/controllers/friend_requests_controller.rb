@@ -1,18 +1,21 @@
 class FriendRequestsController < ApplicationController
+  def index
+    @requests = current_user.friend_requests
+  end
+
   def create
     @user = User.find(params[:user_id])
-    @request = @user.friend_requests.build(requester_id: current_user.id)
 
-    @request.save
+    FriendRequest.new_request(@user, current_user)
   end
 
   def destroy
     @user = User.find(params[:user_id])
-    @request = Request.find(params[:request_id])
-    @response = params[:response]
+    @request = FriendRequest.find(params[:id])
 
-    # Call friendships#create(@user) if @response 
+    FriendRequest.accept_request(@user, current_user) if params[:response]
 
-    @response.destroy
+    @request.destroy
+    redirect_to friend_requests_path
   end
 end

@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     registrations: 'registrations'
   }
 
-  resources :friend_requests, only: [:create, :destroy]
-  resources :friendships, only: [:create, :destroy]
+  resources :friend_requests, only: [:create, :destroy, :index]
+  resources :friendships, only: [:new, :destroy]
   resources :posts
   resources :users, only: :show
 end
