@@ -1,11 +1,47 @@
 class PostsController < ApplicationController
   def index
-    @posts = current_user.posts
+    @posts = Post.get_friends_posts(current_user).sort.reverse!
+  end
 
-    current_user.friends.each do |friend|
-      friend.posts.each do |post|
-        @posts << post
-      end
+  def new
+    @post = Post.new
+  end
+
+  def create
+    @post = Post.new(post_params)
+
+    if @post.save
+      redirect_to root_path
+    else
+      render 'new'
     end
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+
+    if @post.update(post_params)
+      redirect_to root_path 
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+
+    @post.destroy
+
+    redirect_to root_path 
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:body, :user_id)
   end
 end
