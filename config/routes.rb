@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :friendships, only: [:destroy]
   resources :posts, expect: [:show] 
   resources :users, only: :show
+  resources :likes, only: [:create, :destroy]
 end
