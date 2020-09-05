@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :friend_requests, only: [:create, :destroy, :index]
   resources :friendships, only: [:destroy]
   resources :likes, only: [:destroy]
-  resources :comments, only: [:edit, :update, :destroy]
+  resources :comments, only: [:destroy]
   resources :users, only: :show
 
   resources :posts, expect: [:show] do

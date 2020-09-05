@@ -1,12 +1,12 @@
 <% posts.each do |post| %>
   <p>Author: <%= post.user.name.titleize %></p>
   <p>Post: <%= post.body %></p>
-  <%= render partial: "likes", locals: { post: post } %>
-  <%= render partial: "edit_delete", locals: { post: post } %>
+  <%= render partial: "posts/likes", locals: { post: post } %>
+  <%= render partial: "posts/edit_delete", locals: { post: post } %>
 
   <h3>Comments:</h3>
   <% comment = Comment.new %>
   <%= render partial: "comments/form", locals: { comment: comment, post: post } %>
-  <%= render partial: "comments", locals: { post: post } %>
-  <br /><br /><br />
+  <%= render partial: "posts/comments", locals: { post: post } %>
+  <br />
 <% end %>
