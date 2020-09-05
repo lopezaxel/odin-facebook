@@ -1,34 +1,12 @@
 <% posts.each do |post| %>
   <p>Author: <%= post.user.name.titleize %></p>
   <p>Post: <%= post.body %></p>
-  <p>
-    Likes: <%= post.likes.count %>, 
-    <% if Like.user_liked_post?(current_user, post) %>
-      <% like = Like.user_like(current_user, post) %>
-      <%= link_to 'Dislike', like_path(id: like.id), method: "delete" %>
-    <% else %>
-      <%= link_to 'Like', likes_path(user_id: current_user.id, post_id: post.id), method: "post" %>
-  <% end %>
+  <%= render partial: "likes", locals: { post: post } %>
+  <%= render partial: "edit_delete", locals: { post: post } %>
 
-  </p>
-
-  <% if post.user == current_user %>
-    <p>
-      <%= link_to 'Edit post', edit_post_path(post) %>,
-      <%= link_to 'Delete post', post_path(post), method: "delete" %>
-    </p>
-  <% end %>
-
-  <% unless post.comments.empty? %>
-    <h3>Comments:</h3>
-    <ul>
-      <% post.comments.each do |comment| %>
-        <li>
-          <p><%= comment.user.name.titleize %></p>
-          <p><%= comment.body %></p>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-  <br />
+  <h3>Comments:</h3>
+  <% comment = Comment.new %>
+  <%= render partial: "comments/form", locals: { comment: comment, post: post } %>
+  <%= render partial: "comments", locals: { post: post } %>
+  <br /><br /><br />
 <% end %>

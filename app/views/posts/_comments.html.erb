@@ -1,0 +1,10 @@
+<% unless post.comments.empty? %>
+  <ul>
+    <% post.comments.each do |comment| %>
+      <li>
+        <p><%= comment.user.name.titleize %></p>
+        <p><%= comment.body %></p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

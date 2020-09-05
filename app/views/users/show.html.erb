@@ -1,4 +1,8 @@
 <h1><%= @user.name.titleize %> profile:</h1>
+<p>Name: <%= @user.name.titleize %></p>
+<p>Email: <%= @user.email %></p>
+<p>Birthday: <%= @user.birthday %></p>
+<p>Gender: <%= @user.gender %></p>
 
 <% if @user == current_user %>
 <% elsif !(@user.friends.include?(current_user)) %>

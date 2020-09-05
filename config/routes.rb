@@ -7,7 +7,12 @@ Rails.application.routes.draw do
 
   resources :friend_requests, only: [:create, :destroy, :index]
   resources :friendships, only: [:destroy]
-  resources :posts, expect: [:show] 
+  resources :likes, only: [:destroy]
+  resources :comments, only: [:edit, :update, :destroy]
   resources :users, only: :show
-  resources :likes, only: [:create, :destroy]
+
+  resources :posts, expect: [:show] do
+    resources :likes, only: [:create]
+    resources :comments, only: [:new, :create]
+  end
 end
