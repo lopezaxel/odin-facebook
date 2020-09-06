@@ -1,0 +1,7 @@
+<% if user.image.attached? %>
+  <p>Photo: <%= image_tag user.image %></p>
+<% end %>
+<p>Name: <%= user.name.titleize %></p>
+<p>Email: <%= user.email %></p>
+<p>Birthday: <%= user.birthday %></p>
+<p>Gender: <%= user.gender %></p>
