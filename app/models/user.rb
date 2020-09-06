@@ -12,4 +12,12 @@ class User < ApplicationRecord
   has_many :friend_requests
   has_many :friendships
   has_many :friends, through: :friendships
+
+  def is_my_friend?(user)
+    self.friends.exists?(user.id)
+  end
+
+  def pending_request?(user)
+    self.friend_requests.exists?(requester_id: user.id)
+  end
 end
