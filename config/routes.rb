@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   devise_for :users, :controllers => {
-    registrations: 'registrations'
+    registrations: 'registrations',
+    omniauth_callbacks: 'callbacks'
   }
 
   resources :friend_requests, only: [:create, :destroy, :index]
