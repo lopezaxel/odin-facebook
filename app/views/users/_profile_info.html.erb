@@ -1,3 +1,6 @@
+<% if user.id == current_user.id %>
+  <p><%= link_to 'Edit profile', edit_user_registration_path %></p>
+<% end %>
 <% if user.image.attached? %>
   <p>Photo: <%= image_tag user.image %></p>
 <% end %>

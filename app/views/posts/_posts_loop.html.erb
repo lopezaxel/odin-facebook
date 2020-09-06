@@ -1,5 +1,5 @@
 <% posts.each do |post| %>
-  <p>Author: <%= post.user.name.titleize %></p>
+  <p>Author: <%= link_to post.user.name.titleize, user_path(post.user) %></p>
   <p>Post: <%= post.body %></p>
   <%= render partial: "posts/likes", locals: { post: post } %>
   <%= render partial: "posts/edit_delete", locals: { post: post } %>

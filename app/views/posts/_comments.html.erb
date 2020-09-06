@@ -2,7 +2,7 @@
   <ul>
     <% post.comments.each do |comment| %>
       <li>
-        <p><%= comment.user.name.titleize %></p>
+        <p><%= link_to comment.user.name.titleize, user_path(comment.user) %></p>
         <p><%= comment.body %></p>
 
         <% if comment.created_by_user?(current_user) %>
