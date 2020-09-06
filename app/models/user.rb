@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  
+  after_create :send_welcome_email
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
 
@@ -30,4 +33,10 @@ class User < ApplicationRecord
   def pending_request?(user)
     self.friend_requests.exists?(requester_id: user.id)
   end
+
+  private
+
+    def send_welcome_email
+      UserMailer.with(user: self).welcome_email.deliver_now
+    end
 end
