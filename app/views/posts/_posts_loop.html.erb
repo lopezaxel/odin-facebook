@@ -1,12 +1,16 @@
 <% posts.each do |post| %>
-  <p>Author: <%= link_to post.user.name.titleize, user_path(post.user) %></p>
-  <p>Post: <%= post.body %></p>
-  <%= render partial: "posts/likes", locals: { post: post } %>
-  <%= render partial: "posts/edit_delete", locals: { post: post } %>
+  <div class="post">
+    <p id="author"><%= link_to post.user.name.titleize, user_path(post.user) %></p>
+    <p id="date"><%= post.updated_at.to_date.to_s(:long) %></p>
+    <p id="body"><%= post.body %></p>
+    <%= render partial: "posts/likes", locals: { post: post } %>
 
-  <h3>Comments:</h3>
-  <% comment = Comment.new %>
-  <%= render partial: "comments/form", locals: { comment: comment, post: post } %>
-  <%= render partial: "posts/comments", locals: { post: post } %>
-  <br />
+    <h3>Comments:</h3>
+    <% comment = Comment.new %>
+    <%= render partial: "comments/form", locals: { comment: comment, post: post } %>
+    <%= render partial: "posts/comments", locals: { post: post } %>
+
+    <%= render partial: "posts/edit_delete", locals: { post: post } %>
+    <br />
+  </div>
 <% end %>

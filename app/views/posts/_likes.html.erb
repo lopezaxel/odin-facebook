@@ -1,5 +1,5 @@
-<p>
-  Likes: <%= post.likes.count %>, 
+<p id="like">
+  👍 <%= post.likes.count %>, 
   <% if Like.user_liked_post?(current_user, post) %>
     <% like = Like.user_like(current_user, post) %>
     <%= link_to 'Dislike', like_path(id: like.id), method: "delete" %>

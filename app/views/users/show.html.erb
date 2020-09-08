@@ -1,5 +1,9 @@
-<h1><%= @user.name.titleize %> profile:</h1>
-<%= render partial: 'users/profile_info', locals: { user: @user } %>
-<%= render partial: 'users/friends', locals: { user: @user } %>
+<h1 id="user-profile"><%= @user.name.titleize %> profile:</h1>
+
+<div class="profile-info">
+  <%= render partial: 'users/profile_info', locals: { user: @user } %>
+  <%= render partial: 'users/friends', locals: { user: @user } %>
+</div>
+
 <h2>Posts:</h2>
 <%= render partial: 'posts/posts_loop', locals: { posts: @user.posts } %>

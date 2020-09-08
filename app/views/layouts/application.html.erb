@@ -13,20 +13,22 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <ul id="navbar">
-      <li id="logo"><%= link_to 'Facebook', root_path %></li> 
-      <% if user_signed_in? %>
-        <li><%= link_to 'Sign out', destroy_user_session_path, method: "delete" %></li> 
-        <li><%= link_to current_user.name.titleize, user_path(current_user) %></li> 
-        <li><%= link_to 'Friend requests', friend_requests_path %></li>
-        <li><%= link_to 'Users', users_path %></li>
-        <li><%= link_to 'Write post', new_post_path %></li> 
-      <% else %>
-        <li><%= link_to 'Sign in', new_user_session_path %></li>
-        <li><%= link_to 'Sign up', new_user_registration_path %></li>
-      <% end %>
-    </ul>
-    <br /><br />
+    <div id="top-navbar">
+      <ul id="navbar">
+        <li id="logo"><%= link_to 'Facebook', root_path %></li> 
+        <% if user_signed_in? %>
+          <li><%= link_to 'Sign out', destroy_user_session_path, method: "delete" %></li> 
+          <li><%= link_to current_user.name.titleize, user_path(current_user) %></li> 
+          <li><%= link_to 'Friend requests', friend_requests_path %></li>
+          <li><%= link_to 'Users', users_path %></li>
+          <li><%= link_to 'Write post', new_post_path %></li> 
+        <% else %>
+          <li><%= link_to 'Sign in', new_user_session_path %></li>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+        <% end %>
+      </ul>
+      <br /><br />
+    </div>
 
     <%= yield %>
   </body>

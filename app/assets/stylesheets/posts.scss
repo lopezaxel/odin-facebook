@@ -1,3 +1,61 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.post a {
+	color: #385898;
+	text-decoration: none;
+}
+
+.content {
+	max-width: 400px;
+	margin: auto;
+}
+
+.sign-form {
+	max-width: 400px;
+	margin: auto;
+	background-color: #fff;
+	padding: 0.5em;
+	line-height: 1.5;
+}
+
+.title-log {
+	font-size: 1.5em;
+	margin-bottom: 0.5em;
+}
+
+.actions {
+	margin-top: 0.5em;
+}
+
+#news-feed {
+	font-size: 2em;
+	margin: 10px 10px;
+	text-align: center;
+}
+
+.post {
+	background-color: #ffffff;
+	margin: 1em;
+	padding: 0.6em;
+}
+
+#author {
+	margin-bottom: 5px;
+}
+
+#date { 
+	font-size: 0.8em;
+	color: #616770;
+	margin-bottom: 0.8em;
+}
+
+#body {
+	color: #1c1e21;
+	margin-bottom: 0.6em;
+}
+
+#like {
+	
+}
