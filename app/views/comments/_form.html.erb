@@ -1,5 +1,4 @@
 <%= form_for [post, comment] do |f| %>
-  <%= f.label :body %><br />
   <%= f.text_area :body, size: "35x2" %><br />
 
   <%= f.submit "Submit comment", class: "comment" %>
