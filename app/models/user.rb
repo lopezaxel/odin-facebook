@@ -7,6 +7,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
 
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
+  validates :gender, presence: true
+  validates :birthday, presence: true
+  validates :provider, presence: false
+  validates :uid, presence: false
+
   has_one_attached :image
 
   has_many :posts

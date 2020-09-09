@@ -8,11 +8,13 @@
 
 require 'faker'
 
+User.delete_all
+
 50.times do
   user = User.new
 
   user.name = Faker::Name.name
-  user.email = Faker::Internet.free_email
+  user.email = Faker::Internet.unique.free_email
   user.password = Faker::Internet.password(min_length: 6)
   user.gender = Faker::Gender.binary_type
   user.birthday = Faker::Date.between(from: 50.years.ago, to: Date.today)
